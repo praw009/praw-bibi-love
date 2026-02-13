@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praw 💕 bibi</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(#ffd6e7, #fff0f5);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* หน้าเปิด */
+#startScreen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#mainContent {
+  display: none;
+  padding: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4d88;
+  color: white;
+  font-size: 18px;
+}
+
+img {
+  width: 280px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.message {
+  max-width: 500px;
+  margin: 20px auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cc0066;
+}
+
+/* หัวใจลอย */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 24px;
+  animation: float 5s linear infinite;
+  color: #ff4d88;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- หน้าเปิด -->
+<div id="startScreen">
+  <h1>Praw 💖 bibi</h1>
+  <button onclick="enterLove()">กดเพื่อเข้าสู่โลกของเรา 💕</button>
+</div>
+
+<!-- เนื้อหาหลัก -->
+<div id="mainContent">
+  <h1>Happy 7 m. 💕</h1>
+  <h2>Happy Valentine Day</h2>
+
+  <img src="love.jpg">
+
+  <div class="message">
+    ถึง bibi 💌<br><br>
+    ตั้งแต่วันที่เราเริ่มคุยกัน ทุกอย่างในชีวิตเค้าก็เปลี่ยนไปเลยนะ  
+    จากวันธรรมดา ๆ กลายเป็นวันที่มีรอยยิ้มมากขึ้น  
+    มีคนให้คิดถึง มีคนให้เป็นห่วง  
+    และมีคนที่ทำให้หัวใจเต้นแรงทุกครั้งที่เห็นชื่อแจ้งเตือน 💖<br><br>
+
+    7 เดือนที่ผ่านมา อาจมีทั้งวันที่ดีมาก ๆ  
+    และวันที่งอนกันบ้าง แต่ทุกช่วงเวลามันมีค่าหมดเลย  
+    เพราะมันคือ “เรา” 💕<br><br>
+
+    ขอบคุณที่อยู่ข้างกันเสมอ  
+    ขอบคุณที่เป็นรอยยิ้มของเค้า  
+    และขอบคุณที่ทำให้คำว่า “รัก” มีความหมายมากขึ้นทุกวัน<br><br>
+
+    ไม่รู้อนาคตจะเป็นยังไง  
+    แต่วันนี้เค้ารัก bibi มากที่สุดเลยนะ 💗
+  </div>
+
+  <audio id="bgmusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script>
+function enterLove() {
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("mainContent").style.display = "block";
+  document.getElementById("bgmusic").play();
+  setInterval(createHeart, 300);
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (20 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
+</script>
