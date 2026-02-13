@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Praw 💕 bibi</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(#ffd6e7, #fff0f5);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* หน้าเปิด */
+#startScreen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#mainContent {
+  display: none;
+  padding: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4d88;
+  color: white;
+  font-size: 18px;
+}
+
+/* สไลด์ */
+.slider {
+  position: relative;
+  max-width: 320px;
+  margin: auto;
+}
+
+.slide {
+  display: none;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* ข้อความ */
+.message {
+  max-width: 500px;
+  margin: 20px auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cc0066;
+}
+
+/* หัวใจ */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 24px;
+  animation: float 5s linear infinite;
+  color: #ff4d88;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- หน้าเปิด -->
+<div id="startScreen">
+
+  <h1>Praw 💖 bibi</h1>
+
+  <button onclick="enterLove()">
+    กดเพื่อเข้าสู่โลกของเรา 💕
+  </button>
+
+</div>
+
+<!-- เนื้อหา -->
+<div id="mainContent">
+
+  <h1>Happy 7 months 💕</h1>
+  <h2>Happy Valentine Day 💖</h2>
+
+  <!-- สไลด์รูป -->
+  <div class="slider">
+
+    <div class="slide">
+      <img src="img1.jpg">
+    </div>
+
+    <div class="slide">
+      <img src="img2.jpg">
+    </div>
+
+    <div class="slide">
+      <img src="img3.jpg">
+    </div>
+
+  </div>
+
+  <!-- ข้อความ -->
+  <div class="message">
+
+    ถึง bibi 💌<br><br>
+
+    ตั้งแต่วันที่เราเจอกัน  
+    เค้ารู้เลยว่าเธอคือคนพิเศษ 💖<br><br>
+
+    ทุกช่วงเวลาที่มีเธอ  
+    มันทำให้ชีวิตเค้ามีความหมายมากขึ้น<br><br>
+
+    ขอบคุณที่อยู่ข้างกัน  
+    ขอบคุณที่รักกัน  
+    และขอบคุณที่ไม่เคยไปไหน 💕<br><br>
+
+    เค้ารัก bibi มากที่สุดเลยนะ 💗
+
+  </div>
+
+  <!-- เพลง -->
+  <audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+</div>
+
+<script>
+
+let slideIndex = 0;
+
+function enterLove(){
+
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("mainContent").style.display = "block";
+
+  document.getElementById("music").play();
+
+  showSlides();
+
+  setInterval(createHeart, 300);
+
+}
+
+function showSlides(){
+
+  let slides = document.getElementsByClassName("slide");
+
+  for(let i=0;i<slides.length;i++){
+    slides[i].style.display="none";
+  }
+
+  slideIndex++;
+
+  if(slideIndex > slides.length){
+    slideIndex = 1;
+  }
+
+  slides[slideIndex-1].style.display="block";
+
+  setTimeout(showSlides, 3000);
+
+}
+
+function createHeart(){
+
+  const heart = document.createElement("div");
+
+  heart.className="heart";
+
+  heart.innerHTML="💖";
+
+  heart.style.left=Math.random()*100+"vw";
+
+  heart.style.fontSize=(20+Math.random()*20)+"px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },5000);
+
+}
+
+</script>
+
+</body>
+</html>
